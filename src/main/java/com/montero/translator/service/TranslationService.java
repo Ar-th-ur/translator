@@ -23,15 +23,8 @@ public class TranslationService {
                         Translation::getTranslation,
                         Collector.of(
                                 () -> new int[2],
-                                (a, t) -> {
-                                    a[0]++;
-                                    a[1] += t.getNearestDistance();
-                                },
-                                (a1, a2) -> {
-                                    a1[0] += a2[0];
-                                    a1[1] += a2[1];
-                                    return a1;
-                                }
+                                (a, t) -> {a[0]++; a[1] += t.getNearestDistance();},
+                                (a1, a2) -> {a1[0] += a2[0]; a1[1] += a2[1]; return a1;}
                         )
                 ))
                 .entrySet()
